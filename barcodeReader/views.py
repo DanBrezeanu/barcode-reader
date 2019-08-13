@@ -8,8 +8,8 @@ def index(request):
     if request.method == 'POST':
         barcode = BarcodeForm(request.POST, request.FILES)
         if barcode.is_valid():
-            handle_uploaded_file(request.FILES['photo'])
-            return render(request, "index.html", {'form':barcode})
+            filename, barcodeData = handle_uploaded_file(request.FILES['photo'])
+            return render(request, "index.html", {'form':barcode, 'barcodeurl': '/' + filename, 'barcodeData' : barcodeData})
     else:
         barcode = BarcodeForm()
         return render(request, "index.html", {'form':barcode})

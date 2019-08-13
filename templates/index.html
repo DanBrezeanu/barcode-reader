@@ -8,26 +8,55 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ <div class="container-fluid">
+   <form method="POST" class="post-form" enctype="multipart/form-data">
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="fileSelector" style = "width:100%" class="btn btn-primary btn-lg "> Take Photo </label>
+          {% csrf_token %}
+          {% if form.photo.field.widget.input_type == 'file'%}
+          <input style="display:none;" id="fileSelector" type="file" name="{{ form.photo.name }}" accept="image/*" capture="user" onchange="javascript:this.form.submit();"/>
+          {% endif %}
+        </div>
+      </div>
 
+      <br> <br> <br>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <img src = "{{ barcodeurl }}" width='250px' height='200px'>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <p> {{ barcodeData }} </p>
+        </div>
+      </div>
+      <br> <br> <br> <br> <br>
+      <div class="row">
+        <div class="col-sm-6">
+          <button style="width:100%" type="submit" id="submit-butt" class="save btn btn-primary btn-lg align-bottom">Save</button>
+        </div>
+      </div>
+    </form>
+</div>
+
+  <!-- </div>
     <form method="POST" class="post-form" enctype="multipart/form-data">
-        <div class="container-fluid">
-            {% csrf_token %}
+        <div class="container-fluid"> -->
+            <!-- {% csrf_token %} -->
 <!-- style="height:30%;width:100%;font-size:50px;margin-top:30px; overflow:hidden;"  -->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-4">
-                    <label for="fileSelector" style = "width:100%" class="btn btn-primary btn-lg "> Take Photo </label>
-            {% if form.photo.field.widget.input_type == 'file'%}
-                    <input  style="display:none;" id="fileSelector" type="file" name="{{ form.photo.name }}" accept="image/*" capture="user"/>
-            {% endif %}
-                </div>
-            </div>
+            </div> -->
 <!-- style="width:100%" -->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-4">
                     <button  style="width:100%;margin-top:150%"  type="submit" id="submit-butt" class="save btn btn-primary btn-lg align-bottom">Save</button>
                 </div>
             </div>
         </div>
-    </form>
+    </form> -->
   </body>
 </html>

@@ -16,6 +16,7 @@ def handle_uploaded_file(f):
 
     if len(barcodes) == 0:
         print("No barcodes found")
+        return (filename, "No barcodes found")
     else:
         for barcode_idx, barcode in enumerate(barcodes):
             print(barcode.data)
@@ -27,3 +28,4 @@ def handle_uploaded_file(f):
 
             b = Barcodes(barcodeImage = barcode_filename, barcodeData = barcode.data)
             b.save()
+        return (filename, "".join(barData.data.decode("utf-8") for barData in barcodes))
