@@ -1,0 +1,17 @@
+<html>
+  <body>
+    <!-- <input id="fileContainer" type="file" name="image" accept="image/*" capture="user"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <form method="POST" class="post-form" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% if form.photo.field.widget.input_type == 'file'%}
+                    <input type="file" name="{{ form.photo.name }}" accept="image/*" capture="user"/>
+            {% endif %}
+
+            <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+
+  </body>
+</html>
